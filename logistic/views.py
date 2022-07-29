@@ -20,3 +20,5 @@ class StockViewSet(ModelViewSet):
     search_fields = ['products__title', 'products__description']
     filterset_fields = ['products',]
 
+
+
