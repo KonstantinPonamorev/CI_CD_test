@@ -9,6 +9,7 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
 
+
 class ProductPositionSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -20,9 +21,8 @@ class StockSerializer(serializers.ModelSerializer):
     positions = ProductPositionSerializer(many=True)
 
     class Meta:
-       model = Stock
-       fields = ['id', 'address', 'positions']
-
+        model = Stock
+        fields = ['id', 'address', 'positions']
 
     def create(self, validated_data):
         positions = validated_data.pop('positions')
@@ -36,7 +36,6 @@ class StockSerializer(serializers.ModelSerializer):
             )
             new_position.save()
         return stock
-
 
     def update(self, instance, validated_data):
         positions = validated_data.pop('positions')
